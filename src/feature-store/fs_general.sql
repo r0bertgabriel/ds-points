@@ -14,8 +14,8 @@ END) AS pointsAcumulados
 
 FROM transactions
 
-WHERE dtTransaction < '2024-06-04'
-AND dtTransaction >= DATE('2024-06-04', '-21 day')
+WHERE dtTransaction < '{date}'
+AND dtTransaction >= DATE('{date}', '-21 day')
 GROUP BY idCustomer
 
 
@@ -25,7 +25,7 @@ GROUP BY idCustomer
 tb_idade AS (
         SELECT
             t1.idCustomer,
-            CAST(MAX(julianday('2024-06-04') - julianday(t2.dtTransaction))
+            CAST(MAX(julianday('{date}') - julianday(t2.dtTransaction))
                 AS INTEGER) AS idadeBaseDias
 
         FROM tb_rfv AS t1
@@ -48,7 +48,7 @@ tb_idade AS (
 /* JUNTANDO TUDO */
 
 SELECT 
-        '2024-06-04' AS dtRef,
+        '{date}' AS dtRef,
         t1.*,
          t2.idadeBaseDias,
          t3.flEmail
@@ -62,3 +62,5 @@ ON t1.idCustomer = t2.idCustomer
 /* EMAIL VINCULADO */
  LEFT JOIN customers AS t3
  ON t1.idCustomer = t3.idCustomer
+
+/* ctrl+h em cima da data para poder "andar no tempo" */
