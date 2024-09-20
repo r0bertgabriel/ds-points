@@ -47,7 +47,9 @@ tb_idade AS (
 
 /* JUNTANDO TUDO */
 
-SELECT t1.*,
+SELECT 
+        '2024-06-04' AS dtRef,
+        t1.*,
          t2.idadeBaseDias,
          t3.flEmail
 
