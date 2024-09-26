@@ -5,8 +5,8 @@ WITH tb_transactions_products AS (
     FROM transactions AS t1
     LEFT JOIN transactions_product AS t2
     ON t1.idTransaction = t2.idTransaction
-    WHERE t1.dtTransaction < '2024-06-05'
-    AND dtTransaction >= DATE('2024-06-05', '-21 day')
+    WHERE t1.dtTransaction < '{date}'
+    AND dtTransaction >= DATE('{date}', '-21 day')
     ),
 
 tb_share AS (
@@ -17,7 +17,15 @@ SELECT
         SUM(CASE WHEN NameProduct ='Lista de presença' THEN QuantityProduct ELSE 0 END) AS qtdListaPresença,
         SUM(CASE WHEN NameProduct ='Resgatar Ponei' THEN QuantityProduct ELSE 0 END) AS qtdResgatarPonei,
         SUM(CASE WHEN NameProduct ='Troca de Pontos StreamElements' THEN QuantityProduct ELSE 0 END) AS qtdTrocaPontos,
-        SUM(CASE WHEN NameProduct ='Presença Streak' THEN QuantityProduct ELSE 0 END) AS qtdPresençaStreak,
+        SUM(CASE WHEN NameProduct ='Prese
+        
+        
+        
+        
+        
+        
+        
+    --    SUM(CASE WHEN NameProduct = 'Presença Streak THEN QuantityProduct ELSE 0 END) AS qtdPresençaStreak,
         SUM(CASE WHEN NameProduct ='Airflow Lover' THEN QuantityProduct ELSE 0 END) AS qtdAirflowLover,
         SUM(CASE WHEN NameProduct ='R Lover' THEN QuantityProduct ELSE 0 END) AS qtdRLover,
 
